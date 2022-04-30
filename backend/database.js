@@ -1,5 +1,13 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, updateDoc, query, getDocs, where } from "firebase/firestore";
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    updateDoc,
+    query,
+    getDocs,
+    where,
+} from "firebase/firestore";
 import firebaseConfig from "./firebase-config.js";
 
 function getFirebase() {
@@ -8,7 +16,7 @@ function getFirebase() {
     return db;
 }
 
-async function createUser(username, email, stocks, location) {
+async function createUser(username, email, stocks, location, photo) {
     const db = getFirebase();
     const userRef = collection(db, "users");
     const user = {
@@ -16,6 +24,7 @@ async function createUser(username, email, stocks, location) {
         email,
         stocks,
         location,
+        photo,
     };
     return await addDoc(userRef, user);
 }
@@ -34,6 +43,7 @@ function getUserDataFromFetch(fetchedUsers) {
         users.push({
             id: user.id,
             username: data.username,
+            photo: data.photo,
             email: data.email,
             stocks: data.stocks,
             location: data.location,
@@ -45,7 +55,10 @@ function getUserDataFromFetch(fetchedUsers) {
 
 async function getUserByUsername(username) {
     const db = getFirebase();
-    const userQuery = query(collection(db, "users"), where("username", "==", username));
+    const userQuery = query(
+        collection(db, "users"),
+        where("username", "==", username)
+    );
     const fetchedUsers = await getDocs(userQuery);
     return getUserDataFromFetch(fetchedUsers);
 }
@@ -54,10 +67,15 @@ export async function addUser(req, res, next) {
     try {
         const user = req.body.user;
         console.log(user);
-        createUser(user.username, user.email, user.stocks, user.location);
+        createUser(
+            user.username,
+            user.email,
+            user.stocks,
+            user.location,
+            user.photo
+        );
         res.status(201).send("User added");
-    }
-    catch (error) {
+    } catch (error) {
         res.status(400).send("Incorrect body to request");
     }
 }
@@ -85,13 +103,16 @@ export async function updateUser(req, res, next) {
     const db = getFirebase();
     // cannot update username or email, so we will just update the stocks and location
     // get reference to the user document
-    const userQuery = query(collection(db, "users"), where("username", "==", username));
+    const userQuery = query(
+        collection(db, "users"),
+        where("username", "==", username)
+    );
     const fetchedUsers = await getDocs(userQuery);
     const userRef = fetchedUsers.docs[0].ref;
     console.log(userRef);
     await updateDoc(userRef, {
-        "stocks": updatedUser.stocks,
-        "location": updatedUser.location,
+        stocks: updatedUser.stocks,
+        location: updatedUser.location,
     });
 
     res.status(200).send("User updated");
