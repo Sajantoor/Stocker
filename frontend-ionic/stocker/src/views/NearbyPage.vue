@@ -19,16 +19,13 @@
       </div>
       
       </ion-card-header>
-      <!-- <ion-card-content>
-      </ion-card-content> -->
     </ion-card>
     </div>
   </ion-content>
 </template>
 
 <script setup>
-//eslint-disable-next-line
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonIcon } from '@ionic/vue';
+import { IonContent, IonIcon, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/vue';
 import { ellipseOutline } from 'ionicons/icons'  ;
 
 </script>
