@@ -9,6 +9,7 @@ import { IonPage } from "@ionic/vue";
 import { onMounted } from "@vue/runtime-core";
 // import { trendingUpOutline, map, person } from "ionicons/icons";
 import { initializeApp } from "firebase/app";
+import { BACKEND_SERVER } from "../utilities/constants.js";
 import {
   getAuth,
   signInWithRedirect,
@@ -53,11 +54,47 @@ async function checkAuth() {
     // TOOD: To be stored in database
     // eslint-disable-next-line
     const userObject = {
-      name: user.displayName,
-      email: user.email,
-      photo: user.photoURL,
+      user: {
+        username: user.displayName,
+        email: user.email,
+        // photo: user.photoURL,
+        location: "",
+        stocks: [],
+      },
     };
+
+    createUser(userObject);
   }
+}
+
+async function userExists(username) {
+  const response = await fetch(
+    `${BACKEND_SERVER}/get-user?username=${username}`
+  );
+  const data = await response.json();
+  if (data.length > 0) {
+    return true;
+  }
+  return false;
+}
+
+async function createUser(userObject) {
+  // Check if a user exists within the database with the same name
+  const exists = await userExists(userObject.user.username);
+  if (exists) {
+    return;
+  }
+
+  console.log(JSON.stringify(userObject));
+
+  const res = await fetch(`${BACKEND_SERVER}/add-user`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userObject),
+  });
+  console.log(res);
 }
 
 async function login() {
