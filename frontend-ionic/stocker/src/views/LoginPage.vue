@@ -68,6 +68,7 @@ async function checkAuth() {
     };
 
     createUser(userObject);
+    store.setUsername(userObject.user.username);
     routeToHome();
   }
 }

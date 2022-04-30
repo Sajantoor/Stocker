@@ -37,10 +37,38 @@ import {
 import { add } from 'ionicons/icons';
 import Modal from "@/views/components/TheModal.vue";
 import StockCard from '@/views/components/StockCard.vue'
-
-import { useStore } from '@/store/store'
+import { BACKEND_SERVER } from "../utilities/constants.js";
+import { useStore } from '@/store/store';
+import { onMounted, ref } from "vue";
 //eslint-disable-next-line
 const store = useStore();
+const stocks = ref([]);
+
+const getUserStocks = async () => {
+  const username = store.getUsername;
+  console.log(username);
+  const response = await fetch(`${BACKEND_SERVER}/get-user?username=${username}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    }
+  });
+
+  const data = await response.json();
+  console.log(data);
+  const stockData = data[0].stocks;
+
+  for (let i = 0; i < stockData.length; i++) {
+    const stock = stockData[i];
+    stocks.value.push(stock);
+  }
+
+  console.log(stocks.value);
+}
+
+onMounted(() => {
+  getUserStocks();
+});
 
 const openModal = async () => {
   const modal = await modalController.create({
