@@ -2,6 +2,7 @@
   "name": "stocker",
   "version": "0.0.1",
   "private": true,
+  "description": "An Ionic project",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -18,8 +19,9 @@
     "@ionic/vue": "^6.0.0",
     "@ionic/vue-router": "^6.0.0",
     "core-js": "^3.6.5",
-    "pinia": "^2.0.13",
     "firebase": "^9.7.0",
+    "pinia": "^2.0.13",
+    "register-service-worker": "^1.7.2",
     "vue": "^3.2.21",
     "vue-router": "^4.0.12"
   },
@@ -28,6 +30,7 @@
     "@vue/cli-plugin-babel": "~5.0.0-rc.1",
     "@vue/cli-plugin-e2e-cypress": "~5.0.0-rc.1",
     "@vue/cli-plugin-eslint": "~5.0.0-rc.1",
+    "@vue/cli-plugin-pwa": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0-rc.1",
     "@vue/cli-plugin-unit-jest": "~5.0.0-rc.1",
     "@vue/cli-service": "5.0.4",
@@ -39,6 +42,5 @@
     "eslint-plugin-vue": "^8.2.0",
     "jest": "^27.3.1",
     "ts-jest": "^27.0.7"
-  },
-  "description": "An Ionic project"
+  }
 }
