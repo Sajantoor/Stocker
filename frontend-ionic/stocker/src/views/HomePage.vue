@@ -1,13 +1,14 @@
 <template>
-  <ion-page>
+  <ion-page id="home-page">
 
     <div class="grid">
       <ion-header>
         <ion-img id="logo" :src="require(`../../public/assets/stocker.png`)"></ion-img>
       </ion-header>
 
-      <div>
-        
+      <div class="inner-page">
+        <MyStocks ></MyStocks>
+      <!-- <MyStocks class="inner-page"></MyStocks> -->
       </div>
 
       <ion-tab-bar class="toolbar">
@@ -32,9 +33,13 @@
 <script setup>
 import { IonHeader, IonPage, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/vue';
 import { trendingUpOutline, map, person } from 'ionicons/icons';
+
+import MyStocks from './components/MyStocks.vue';
+
 </script>
 
 <style scoped>
+
 #logo {
   width: 12em;
   display: block;
@@ -48,6 +53,11 @@ import { trendingUpOutline, map, person } from 'ionicons/icons';
   grid-template-rows: auto 1fr auto;
 }
 
+.inner-page {
+  height: auto;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
 .toolbar {
   height: 5em;
   grid-row-start: 3;
@@ -55,10 +65,10 @@ import { trendingUpOutline, map, person } from 'ionicons/icons';
 }
 
 .icon-size {
-  font-size: 5em;
+  font-size: 4em;
 }
 
 .icon-label {
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 </style>
