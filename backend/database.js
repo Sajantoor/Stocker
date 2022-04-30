@@ -75,12 +75,26 @@ export async function getUser(req, res, next) {
     next();
 }
 
-
 export async function updateUser(req, res, next) {
-    const username = res.query.username;
-    const user = getUserByUsername(username);
+    const username = req.query.username;
+    // Going to assume that a username is unique
+    let user = await getUserByUsername(username);
+    user = user[0];
+    console.log(user);
+    const updatedUser = req.body.user;
+    const db = getFirebase();
+    // cannot update username or email, so we will just update the stocks and location
+    // get reference to the user document
+    const userQuery = query(collection(db, "users"), where("username", "==", username));
+    const fetchedUsers = await getDocs(userQuery);
+    const userRef = fetchedUsers.docs[0].ref;
+    console.log(userRef);
+    await updateDoc(userRef, {
+        "stocks": updatedUser.stocks,
+        "location": updatedUser.location,
+    });
 
-
+    res.status(200).send("User updated");
 }
 
 // export default useDatabase;
