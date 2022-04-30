@@ -1,7 +1,7 @@
 <template>
 
   <ion-content class="ion-padding">
-    <ion-searchbar v-model="searchQuery" @search="queryAPI"></ion-searchbar>
+    <ion-searchbar show-cancel-button="cancel" @ionCancel = "closeModal" v-model="searchQuery" @search="queryAPI"></ion-searchbar>
     <div>
 
     </div>
@@ -19,12 +19,18 @@
 import {
   IonContent,
   IonSearchbar,
+   modalController,
   // IonList
 } from "@ionic/vue";
 import { ref } from "vue";
 
 const stocks = ref([]);
 const searchQuery = ref("");
+
+
+    const closeModal = () => {
+      modalController.dismiss();
+    };
 
 // eslint-disable-next-line
 async function queryAPI() {
