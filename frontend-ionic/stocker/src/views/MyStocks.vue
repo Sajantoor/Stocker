@@ -1,30 +1,27 @@
 <template>
-  <ion-content> 
-    <h1>
-      My Stocks
-    </h1>
+  <h1>
+    My Stocks
+  </h1>
+  <ion-searchbar class="searchbar" slot="fixed"></ion-searchbar>
+  
+  <ion-fab class="add-stock-btn">
+    <ion-fab-button @click="openModal()">
+      <ion-icon :icon="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>    
 
-    <ion-searchbar></ion-searchbar>
-
-    <ion-content >
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-    </ion-content>
-
-    <ion-fab class="add-stock-btn" vertical="bottom" horizontal="end">
-      <ion-fab-button @click="openModal()">
-        <ion-icon :icon="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>    
-
+  <ion-content>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
   </ion-content>
+
 </template>
 
 <script setup>
@@ -76,6 +73,7 @@ h1 {
 }
 
 .add-stock-btn {
-  margin-bottom: 5em;
+  bottom: 6em;
+  right: 1em;
 }
 </style>

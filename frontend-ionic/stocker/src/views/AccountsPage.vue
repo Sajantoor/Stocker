@@ -122,8 +122,7 @@
 </template>
 
 <script setup>
-// eslint-disable-next-line
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonIcon } from '@ionic/vue';
+import { IonContent, IonList, IonIcon, IonRadio, IonItem, IonToggle, IonLabel, IonCard, IonCardContent, IonAvatar, IonCardHeader } from '@ionic/vue';
 import { chevronForwardOutline, notificationsOutline, pinOutline, personOutline,constructOutline, flagOutline } from 'ionicons/icons'  ;
 </script>
 
