@@ -1,68 +1,65 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Blank</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
+
+    <div class="grid">
+      <ion-header>
+        <ion-img id="logo" :src="require(`../../public/assets/stocker.png`)"></ion-img>
       </ion-header>
-    
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+      <div>
+        
       </div>
-    </ion-content>
+      <!-- <ion-tabs class="toolbar"> -->
+        <ion-tab-bar class="toolbar">
+          <ion-tab-button tab="stocks">
+            <ion-icon class="icon-size" :icon="trendingUpOutline"></ion-icon>
+            <ion-label class="icon-label">My Stocks</ion-label>
+          </ion-tab-button>
+          <ion-tab-button tab="other stockers">
+            <ion-icon class="icon-size" :icon="map"></ion-icon>
+            <ion-label class="icon-label">Other Stockers</ion-label>
+          </ion-tab-button>
+          <ion-tab-button tab="account">
+            <ion-icon class="icon-size" :icon="person"></ion-icon>
+            <ion-label class="icon-label">Account</ion-label>
+          </ion-tab-button>
+        </ion-tab-bar>
+      <!-- </ion-tabs> -->
+    </div>
+    
   </ion-page>
 </template>
 
-<script>
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'HomePage',
-  components: {
-    IonContent,
-    IonHeader,
-    IonPage,
-    IonTitle,
-    IonToolbar
-  }
-});
+<script setup>
+import { IonHeader, IonPage, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/vue';
+import { trendingUpOutline, map, person } from 'ionicons/icons';
 </script>
 
 <style scoped>
-#container {
-  text-align: center;
-  
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+#logo {
+  width: 12em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.grid {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  
-  color: #8c8c8c;
-  
-  margin: 0;
+.toolbar {
+  height: 5em;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
-#container a {
-  text-decoration: none;
+.icon-size {
+  font-size: 5em;
+}
+
+.icon-label {
+  font-size: 1.5em;
 }
 </style>
