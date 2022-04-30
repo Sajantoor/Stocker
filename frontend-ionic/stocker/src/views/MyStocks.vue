@@ -73,7 +73,7 @@ h1 {
 }
 
 .add-stock-btn {
-  bottom: 6em;
+  bottom: 8em;
   right: 1em;
 }
 </style>

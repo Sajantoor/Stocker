@@ -1,5 +1,5 @@
 <template>
-  <ion-app>
+  <ion-app style="margin-top: 30px;">
     <ion-router-outlet />
   </ion-app>
 </template>
