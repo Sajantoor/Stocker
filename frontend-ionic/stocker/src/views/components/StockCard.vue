@@ -1,12 +1,14 @@
 <template>
-  
-
       <ion-card @click="toggle()">
         <ion-card-header>
           <div style="display: flex;">
             <div>
-            <ion-card-title>SYMBL</ion-card-title>
-            <ion-card-subtitle>Company Name</ion-card-subtitle>
+              <slot name="symbol"></slot>
+              <slot name="companyName"></slot>
+              <!-- <ion-card-title>
+              </ion-card-title>
+              <ion-card-subtitle>
+              </ion-card-subtitle> -->
             </div>
             <div class="stock_price">
               <h4>$420.69</h4>
@@ -64,13 +66,12 @@
 </template>
 
 <script setup>
-import {
-  
+import {  
   IonCard,
   IonCardContent,
   IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
+  // IonCardSubtitle,
+  // IonCardTitle,
 } from "@ionic/vue";
 
 import { ref } from 'vue'

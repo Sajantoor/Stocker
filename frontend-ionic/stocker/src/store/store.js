@@ -15,6 +15,9 @@ export const useStore = defineStore({
     },
     setUsername(username) {
       this.username = username
+    },
+    addStock(stock) {
+      this.stocks.push(stock)
     }
   },
 
@@ -24,6 +27,9 @@ export const useStore = defineStore({
     },
     getUsername: (state) => {
       return state.username
+    },
+    getAllStocks: (state) => {  
+      return state.stocks
     }
   }
 })

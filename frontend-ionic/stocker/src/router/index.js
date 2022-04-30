@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import HomePage from '../views/HomePage.vue'
 import MyStocks from '../views/MyStocks.vue'
-import AddStock from '../views/components/AddStock.vue'
 import Login from "../views/LoginPage.vue"
 import AccountsPage from "../views/AccountsPage.vue"
 import NearbyPage from '../views/NearbyPage.vue'
@@ -29,11 +28,6 @@ const routes = [
         component: AccountsPage
       }
     ]
-  },
-  {
-    path: '/addstock',
-    name: 'Add Stock',
-    component: AddStock,
   },
   {
     path: "/login",

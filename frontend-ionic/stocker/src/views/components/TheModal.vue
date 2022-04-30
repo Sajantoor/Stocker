@@ -5,12 +5,11 @@
     <div>
 
     </div>
-    <ion-list v-for="stock in stocks" :key="stock.id">
-      <!-- for stock of stocks -->
-    <ion-item @click="addStock()">
-      <ion-label>{{stock["1. symbol"]}}</ion-label>
-      <ion-label style ="text-align: right;">{{stock["2. name"]}}</ion-label>
-    </ion-item>
+    <ion-list v-for="stock in stocks" :key="stock">
+      <ion-item @click="addStock(stock)">
+        <ion-label>{{stock["1. symbol"]}}</ion-label>
+        <ion-label style ="text-align: right;">{{stock["2. name"]}}</ion-label>
+      </ion-item>
     </ion-list>
   </ion-content>
 </template>
@@ -26,19 +25,23 @@ import {
   // IonList
 } from "@ionic/vue";
 import { ref } from "vue";
+import { useStore } from '@/store/store'
+
+const store = useStore();
 
 const stocks = ref([]);
 const searchQuery = ref("");
 
+const closeModal = () => {
+  modalController.dismiss();
+};
 
-    const closeModal = () => {
-      modalController.dismiss();
-    };
-
-// eslint-disable-next-line
-
-function addStock(){
-  
+function addStock(stock) {
+  let stockSymbol = stock["1. symbol"];
+  let stockName = stock["2. name"];
+  store.addStock({symbol: stockSymbol, name: stockName});
+  console.log(store.getAllStocks);
+  closeModal();
 }
 
 async function queryAPI() {
@@ -55,6 +58,6 @@ async function queryAPI() {
     stocks.value.push(stockQueryArray[i]);
   }
 
-  console.log(stocks.value);
+  // console.log(stocks.value);
 }
 </script>

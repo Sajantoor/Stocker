@@ -10,16 +10,20 @@
     </ion-fab-button>
   </ion-fab>    
 
-  <ion-content>
-    <StockCard></StockCard>
-    <StockCard></StockCard>
-    <StockCard></StockCard>
-    <StockCard></StockCard>
-    <StockCard></StockCard>
-    <StockCard></StockCard>
-    <StockCard></StockCard>
-    <StockCard></StockCard>
-    <StockCard></StockCard>
+  <ion-content v-for="stock in store.stocks" :key="stock">
+    <StockCard> 
+      <template #symbol> 
+        <ion-card-title> 
+          {{ stock.symbol }}
+        </ion-card-title>
+      </template>
+
+      <template #companyName> 
+        <ion-card-subtitle> 
+          {{ stock.name }}
+        </ion-card-subtitle>
+      </template>
+    </StockCard>
   </ion-content>
 
 </template>
@@ -31,7 +35,9 @@ import {
   IonIcon,
   IonFab,
   IonFabButton,
-  modalController
+  modalController,
+  IonCardTitle,
+  IonCardSubtitle
 } from "@ionic/vue";
 
 import { add } from 'ionicons/icons';
