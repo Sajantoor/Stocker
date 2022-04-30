@@ -7,7 +7,7 @@
     </div>
     <ion-list v-for="stock in stocks" :key="stock.id">
       <!-- for stock of stocks -->
-    <ion-item >
+    <ion-item @click="addStock()">
       <ion-label>{{stock["1. symbol"]}}</ion-label>
       <ion-label style ="text-align: right;">{{stock["2. name"]}}</ion-label>
     </ion-item>
@@ -19,7 +19,10 @@
 import {
   IonContent,
   IonSearchbar,
-   modalController,
+  IonList,
+  IonLabel,
+  IonItem,
+  modalController,
   // IonList
 } from "@ionic/vue";
 import { ref } from "vue";
@@ -33,6 +36,11 @@ const searchQuery = ref("");
     };
 
 // eslint-disable-next-line
+
+function addStock(){
+  
+}
+
 async function queryAPI() {
   const stockAPIKey = process.env.VUE_APP_STOCK_API_KEY || "IQ2B4DRX54AR4MEM";
   const response = await fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${searchQuery.value}&apikey=${stockAPIKey}`);
