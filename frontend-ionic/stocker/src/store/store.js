@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useStocksStore = defineStore({
+export const useStore = defineStore({
   id: 'store',
   
   state: () => ({
@@ -8,5 +8,15 @@ export const useStocksStore = defineStore({
     stocks: [],
   }),
 
-  
+  actions: {
+    setAccessToken(token) {
+      this.accessToken = token
+    }
+  },
+
+  getters: {
+    getAccessToken: (state) => {
+      return state.accessToken
+    }
+  }
 })
