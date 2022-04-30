@@ -15,7 +15,7 @@
           <ion-icon class="icon-size" :icon="trendingUpOutline"></ion-icon>
           <ion-label class="icon-label">My Stocks</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="other stockers" @click="$router.push('/home/otherstockers')">
+        <ion-tab-button tab="other stockers" @click="$router.push('/home/nearby')">
           <ion-icon class="icon-size" :icon="map"></ion-icon>
           <ion-label class="icon-label">Other Stockers</ion-label>
         </ion-tab-button>

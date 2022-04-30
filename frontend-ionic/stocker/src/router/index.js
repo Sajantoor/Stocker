@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import HomePage from '../views/HomePage.vue'
 import MyStocks from '../views/MyStocks.vue'
 import AddStock from '../views/components/AddStock.vue'
-import OtherStockers from '../views/OtherStockers.vue'
 import Login from "../views/LoginPage.vue"
 import AccountsPage from "../views/AccountsPage.vue"
+import NearbyPage from '../views/NearbyPage.vue'
 
 const routes = [
   {
@@ -21,8 +21,8 @@ const routes = [
         component: MyStocks
       },
       {
-        path: 'otherstockers',
-        component: OtherStockers
+        path: 'nearby',
+        component: NearbyPage
       },
       {
         path: 'account',
@@ -39,7 +39,7 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
-},
+  },
 ]
 
 const router = createRouter({
