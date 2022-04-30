@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
-// import { RouteRecordRaw } from 'vue-router';
 import HomePage from '../views/HomePage.vue'
-import MyStocks from '../views/components/MyStocks.vue'
+import MyStocks from '../views/MyStocks.vue'
+import AddStock from '../views/components/AddStock.vue'
+import OtherStockers from '../views/OtherStockers.vue'
 
 const routes = [
   {
@@ -11,12 +12,22 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: HomePage
+    component: HomePage,
+    children: [
+      {
+        path: 'mystocks',
+        component: MyStocks
+      },
+      {
+        path: 'otherstockers',
+        component: OtherStockers
+      }
+    ]
   },
   {
-    path: '/mystocks',
-    name: 'My Stocks',
-    component: MyStocks
+    path: '/addstock',
+    name: 'Add Stock',
+    component: AddStock,
   }
 ]
 

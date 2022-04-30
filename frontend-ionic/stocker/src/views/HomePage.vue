@@ -7,20 +7,19 @@
       </ion-header>
 
       <div class="inner-page">
-        <MyStocks ></MyStocks>
-      <!-- <MyStocks class="inner-page"></MyStocks> -->
+        <router-view></router-view>
       </div>
 
       <ion-tab-bar class="toolbar">
-        <ion-tab-button tab="stocks">
+        <ion-tab-button tab="stocks" @click="$router.push('/home/mystocks')">
           <ion-icon class="icon-size" :icon="trendingUpOutline"></ion-icon>
           <ion-label class="icon-label">My Stocks</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="other stockers">
+        <ion-tab-button tab="other stockers" @click="$router.push('/home/otherstockers')">
           <ion-icon class="icon-size" :icon="map"></ion-icon>
           <ion-label class="icon-label">Other Stockers</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="account">
+        <ion-tab-button tab="account" @click="$router.push('/home/mystocks')">
           <ion-icon class="icon-size" :icon="person"></ion-icon>
           <ion-label class="icon-label">Account</ion-label>
         </ion-tab-button>
@@ -33,8 +32,6 @@
 <script setup>
 import { IonHeader, IonPage, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/vue';
 import { trendingUpOutline, map, person } from 'ionicons/icons';
-
-import MyStocks from './components/MyStocks.vue';
 
 </script>
 

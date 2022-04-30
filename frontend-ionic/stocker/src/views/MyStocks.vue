@@ -1,9 +1,5 @@
 <template>
   <ion-page> 
-
-    <!-- <ion-header collapse="condense">
-      <ion-title size="large">My Stocks</ion-title>
-    </ion-header> -->
     <h1>
       My Stocks
     </h1>
@@ -23,7 +19,7 @@
     </ion-content>
 
     <ion-fab class="add-stock-btn" vertical="bottom" horizontal="end">
-      <ion-fab-button>
+      <ion-fab-button @click="openModal()">
         <ion-icon :icon="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>
@@ -36,11 +32,21 @@
 import {
   IonContent,
   IonSearchbar,
-  IonIcon
+  IonIcon,
+  modalController
 
 } from "@ionic/vue";
- import StockCard from '../components/StockCard.vue'
+ import StockCard from './components/StockCard.vue'
  import { add } from 'ionicons/icons';
+ import Modal from "@/views/components/TheModal.vue";
+
+
+ const openModal = async () => {
+  const modal = await modalController.create({
+    component: Modal, //Modal is name of the component to render inside ionic modal
+  });
+  return modal.present();
+};
 
 </script>
 
