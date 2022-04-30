@@ -7,7 +7,6 @@
 <script setup>
 import { IonPage } from "@ionic/vue";
 import { onMounted } from "@vue/runtime-core";
-// import { trendingUpOutline, map, person } from "ionicons/icons";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
