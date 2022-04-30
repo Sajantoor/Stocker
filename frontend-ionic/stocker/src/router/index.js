@@ -8,10 +8,11 @@ import NearbyPage from '../views/NearbyPage.vue'
 const routes = [
   {
     path: '/',
-    redirect: '/home/mystocks'
+    redirect: '/login'
   },
   {
     path: '/home',
+    redirect: '/home/mystocks',
     name: 'Home',
     component: HomePage,
     children: [

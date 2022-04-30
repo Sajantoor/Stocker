@@ -105,7 +105,7 @@ async function createUser(userObject) {
 
 // eslint-disable-next-line
 const routeToHome = () => {
-  router.push('/'); 
+  router.push('/home'); 
 }
 
 async function login() {
