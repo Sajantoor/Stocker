@@ -19,7 +19,7 @@
           <ion-icon class="icon-size" :icon="map"></ion-icon>
           <ion-label class="icon-label">Other Stockers</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="account" @click="$router.push('/home/mystocks')">
+        <ion-tab-button tab="account" @click="$router.push('/home/account')">
           <ion-icon class="icon-size" :icon="person"></ion-icon>
           <ion-label class="icon-label">Account</ion-label>
         </ion-tab-button>

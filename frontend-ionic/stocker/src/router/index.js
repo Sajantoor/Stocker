@@ -4,6 +4,7 @@ import MyStocks from '../views/MyStocks.vue'
 import AddStock from '../views/components/AddStock.vue'
 import OtherStockers from '../views/OtherStockers.vue'
 import Login from "../views/LoginPage.vue"
+import AccountsPage from "../views/AccountsPage.vue"
 
 const routes = [
   {
@@ -22,6 +23,10 @@ const routes = [
       {
         path: 'otherstockers',
         component: OtherStockers
+      },
+      {
+        path: 'account',
+        component: AccountsPage
       }
     ]
   },
