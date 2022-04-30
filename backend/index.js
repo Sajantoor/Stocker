@@ -1,12 +1,15 @@
 import express from "express";
-import checkAuth from "./login.js";
 import dotenv from "dotenv";
+import cors from "cors";
+import checkAuth from "./login.js";
 import { addUser, getUser, getUsers, updateUser } from "./database.js";
 
 dotenv.config();
 
 const main = async () => {
     const app = express();
+    // enable cors on all requests
+    app.use(cors());
     app.use(express.json()); // for parsing application/json
 
     app.listen(process.env.PORT || 4000, () => {
