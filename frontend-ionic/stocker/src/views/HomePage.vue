@@ -9,22 +9,21 @@
       <div>
         
       </div>
-      <!-- <ion-tabs class="toolbar"> -->
-        <ion-tab-bar class="toolbar">
-          <ion-tab-button tab="stocks">
-            <ion-icon class="icon-size" :icon="trendingUpOutline"></ion-icon>
-            <ion-label class="icon-label">My Stocks</ion-label>
-          </ion-tab-button>
-          <ion-tab-button tab="other stockers">
-            <ion-icon class="icon-size" :icon="map"></ion-icon>
-            <ion-label class="icon-label">Other Stockers</ion-label>
-          </ion-tab-button>
-          <ion-tab-button tab="account">
-            <ion-icon class="icon-size" :icon="person"></ion-icon>
-            <ion-label class="icon-label">Account</ion-label>
-          </ion-tab-button>
-        </ion-tab-bar>
-      <!-- </ion-tabs> -->
+
+      <ion-tab-bar class="toolbar">
+        <ion-tab-button tab="stocks">
+          <ion-icon class="icon-size" :icon="trendingUpOutline"></ion-icon>
+          <ion-label class="icon-label">My Stocks</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="other stockers">
+          <ion-icon class="icon-size" :icon="map"></ion-icon>
+          <ion-label class="icon-label">Other Stockers</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="account">
+          <ion-icon class="icon-size" :icon="person"></ion-icon>
+          <ion-label class="icon-label">Account</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
     </div>
     
   </ion-page>
