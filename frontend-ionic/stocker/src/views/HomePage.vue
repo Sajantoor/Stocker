@@ -15,11 +15,11 @@
           <ion-icon class="icon-size" :icon="trendingUpOutline"></ion-icon>
           <ion-label class="icon-label">My Stocks</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="other stockers" @click="$router.push('/home/otherstockers')">
+        <ion-tab-button tab="other stockers" @click="$router.push('/home/nearby')">
           <ion-icon class="icon-size" :icon="map"></ion-icon>
           <ion-label class="icon-label">Other Stockers</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="account" @click="$router.push('/home/mystocks')">
+        <ion-tab-button tab="account" @click="$router.push('/home/account')">
           <ion-icon class="icon-size" :icon="person"></ion-icon>
           <ion-label class="icon-label">Account</ion-label>
         </ion-tab-button>
@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { IonHeader, IonPage, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/vue';
+import { IonHeader, IonPage, IonTabBar, IonTabButton, IonIcon, IonLabel, IonImg } from '@ionic/vue';
 import { trendingUpOutline, map, person } from 'ionicons/icons';
 
 </script>

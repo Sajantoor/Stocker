@@ -1,9 +1,9 @@
 <template>
-  <ion-page>
+  <ion-content>
     hello other stockers
-  </ion-page>
+  </ion-content>
 </template>
 
 <script setup>
-
+import { IonContent } from '@ionic/vue';
 </script>

@@ -1,31 +1,27 @@
 <template>
-  <ion-page> 
-    <h1>
-      My Stocks
-    </h1>
+  <h1>
+    My Stocks
+  </h1>
+  <ion-searchbar class="searchbar" slot="fixed"></ion-searchbar>
+  
+  <ion-fab class="add-stock-btn">
+    <ion-fab-button @click="openModal()">
+      <ion-icon :icon="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>    
 
-    <ion-searchbar></ion-searchbar>
+  <ion-content>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+    <StockCard></StockCard>
+  </ion-content>
 
-    <ion-content >
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-      <StockCard></StockCard>
-    </ion-content>
-
-    <ion-fab class="add-stock-btn" vertical="bottom" horizontal="end">
-      <ion-fab-button @click="openModal()">
-        <ion-icon :icon="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-    
-
-  </ion-page>
 </template>
 
 <script setup>
@@ -33,15 +29,20 @@ import {
   IonContent,
   IonSearchbar,
   IonIcon,
+  IonFab,
+  IonFabButton,
   modalController
-
 } from "@ionic/vue";
- import StockCard from './components/StockCard.vue'
- import { add } from 'ionicons/icons';
- import Modal from "@/views/components/TheModal.vue";
 
+import { add } from 'ionicons/icons';
+import Modal from "@/views/components/TheModal.vue";
+import StockCard from '@/views/components/StockCard.vue'
 
- const openModal = async () => {
+import { useStore } from '@/store/store'
+//eslint-disable-next-line
+const store = useStore();
+
+const openModal = async () => {
   const modal = await modalController.create({
     component: Modal, //Modal is name of the component to render inside ionic modal
   });
@@ -72,6 +73,7 @@ h1 {
 }
 
 .add-stock-btn {
-  margin-bottom: 5em;
+  bottom: 6em;
+  right: 1em;
 }
 </style>
