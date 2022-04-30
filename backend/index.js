@@ -9,8 +9,12 @@ const main = async () => {
     const app = express();
     app.use(express.json()); // for parsing application/json
 
-    app.listen(4000, () => {
-        console.log("Listening on port 4000");
+    app.listen(process.env.PORT || 4000, () => {
+        console.log(`Listening on port ${process.env.PORT || 4000}`);
+    });
+
+    app.get("/", function (req, res) {
+        res.send("<h1>Hello, World!</h1>");
     });
 
     app.use("/login", checkAuth);

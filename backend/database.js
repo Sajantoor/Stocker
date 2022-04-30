@@ -1,5 +1,13 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, updateDoc, query, getDocs, where } from "firebase/firestore";
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    updateDoc,
+    query,
+    getDocs,
+    where,
+} from "firebase/firestore";
 import firebaseConfig from "./firebase-config.js";
 
 function getFirebase() {
@@ -45,7 +53,10 @@ function getUserDataFromFetch(fetchedUsers) {
 
 async function getUserByUsername(username) {
     const db = getFirebase();
-    const userQuery = query(collection(db, "users"), where("username", "==", username));
+    const userQuery = query(
+        collection(db, "users"),
+        where("username", "==", username)
+    );
     const fetchedUsers = await getDocs(userQuery);
     return getUserDataFromFetch(fetchedUsers);
 }
@@ -56,8 +67,7 @@ export async function addUser(req, res, next) {
         console.log(user);
         createUser(user.username, user.email, user.stocks, user.location);
         res.status(201).send("User added");
-    }
-    catch (error) {
+    } catch (error) {
         res.status(400).send("Incorrect body to request");
     }
 }
@@ -85,13 +95,16 @@ export async function updateUser(req, res, next) {
     const db = getFirebase();
     // cannot update username or email, so we will just update the stocks and location
     // get reference to the user document
-    const userQuery = query(collection(db, "users"), where("username", "==", username));
+    const userQuery = query(
+        collection(db, "users"),
+        where("username", "==", username)
+    );
     const fetchedUsers = await getDocs(userQuery);
     const userRef = fetchedUsers.docs[0].ref;
     console.log(userRef);
     await updateDoc(userRef, {
-        "stocks": updatedUser.stocks,
-        "location": updatedUser.location,
+        stocks: updatedUser.stocks,
+        location: updatedUser.location,
     });
 
     res.status(200).send("User updated");
