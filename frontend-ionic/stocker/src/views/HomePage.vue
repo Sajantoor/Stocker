@@ -33,6 +33,43 @@
 import { IonHeader, IonPage, IonTabBar, IonTabButton, IonIcon, IonLabel, IonImg } from '@ionic/vue';
 import { trendingUpOutline, map, person } from 'ionicons/icons';
 
+import { Geolocation } from '@capacitor/geolocation';
+import { onMounted } from '@vue/runtime-core';
+import { useStore } from '@/store/store'
+import { BACKEND_SERVER } from "../utilities/constants.js";
+
+const store = useStore();
+
+const getLocation = async () => {
+   const coordinates = await Geolocation.getCurrentPosition();
+   // update the user with the location 
+     const username = "Sajan Toor";
+  console.log(username);
+  console.log(`${BACKEND_SERVER}/get-user?username=${username}`);
+  const response = await fetch(`${BACKEND_SERVER}/get-user?username=${username}`);
+
+  const data = await response.json();
+  console.log(data);
+  const user = data[0];
+  console.log(user);
+
+  user.location = "(" + coordinates.coords.latitude + ", " + coordinates.coords.longitude + ")";
+  console.log(user);
+
+  await fetch(`${BACKEND_SERVER}/update-user?username=${username}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user)
+  });
+};
+
+onMounted(() => {
+  getLocation();
+});
+
+
 </script>
 
 <style scoped>
