@@ -3,12 +3,12 @@ import HomePage from '../views/HomePage.vue'
 import MyStocks from '../views/MyStocks.vue'
 import AddStock from '../views/components/AddStock.vue'
 import OtherStockers from '../views/OtherStockers.vue'
-import Login from "../views/LoginPage.vue";
+import Login from "../views/LoginPage.vue"
 
 const routes = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/home/mystocks'
   },
   {
     path: '/home',

@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { IonHeader, IonPage, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/vue';
+import { IonHeader, IonPage, IonTabBar, IonTabButton, IonIcon, IonLabel, IonImg } from '@ionic/vue';
 import { trendingUpOutline, map, person } from 'ionicons/icons';
 
 </script>

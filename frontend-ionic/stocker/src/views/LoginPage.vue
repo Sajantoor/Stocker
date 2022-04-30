@@ -1,21 +1,25 @@
 <template>
-  <ion-page id="login-page">
-    <button @click="login">Login with Google</button>
+  <ion-page>
+    <ion-img id="logo" class="margin-tb" :src="require(`../../public/assets/stocker.png`)"></ion-img>
+    <ion-button id="login-btn" class="margin-tb" @click="login()">Login with Google</ion-button>
   </ion-page>
 </template>
 
 <script setup>
-import { IonPage } from "@ionic/vue";
-import { onMounted } from "@vue/runtime-core";
-import { initializeApp } from "firebase/app";
+import { IonPage, IonButton, IonImg } from "@ionic/vue"
+import { onMounted } from "@vue/runtime-core"
+import { initializeApp } from "firebase/app"
 import {
   getAuth,
   signInWithRedirect,
   GoogleAuthProvider,
   getRedirectResult,
-} from "firebase/auth";
+} from "firebase/auth"
 
-onMounted(() => checkAuth());
+import router from "../router"
+import { useStore } from '@/store/store'
+
+const store = useStore();
 
 async function initApp() {
   console.log(process.env);
@@ -43,30 +47,61 @@ async function checkAuth() {
     console.log(result.user);
 
     const credential = GoogleAuthProvider.credentialFromResult(result);
-    // eslint-disable-next-line
     const token = credential.accessToken;
+    console.log(token);
     // The signed-in user info.
     const user = result.user;
-    // TOOD: Call backend with user information
-    // TODO: Save this token and use it for future requests
+    // TODO: Call backend with user information
+    store.setAccessToken(token);
     // TOOD: To be stored in database
+    
     // eslint-disable-next-line
     const userObject = {
       name: user.displayName,
       email: user.email,
       photo: user.photoURL,
     };
+
+    routeToHome();
   }
 }
 
+// eslint-disable-next-line
+const routeToHome = () => {
+  router.push('/'); 
+}
+
 async function login() {
-  initApp();
   const auth = getAuth();
 
   const provider = new GoogleAuthProvider();
   signInWithRedirect(auth, provider);
 }
+
+onMounted(() => checkAuth());
+
 </script>
 
 <style scoped>
+
+#login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-around;
+}
+
+#logo {
+  align-self: center
+}
+
+#login-btn {
+  
+}
+
+.margin-tb {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 </style>
