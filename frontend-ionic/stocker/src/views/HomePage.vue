@@ -43,7 +43,7 @@ const store = useStore();
 const getLocation = async () => {
    const coordinates = await Geolocation.getCurrentPosition();
    // update the user with the location 
-     const username = "Sajan Toor";
+     const username = store.getUsername;
   console.log(username);
   console.log(`${BACKEND_SERVER}/get-user?username=${username}`);
   const response = await fetch(`${BACKEND_SERVER}/get-user?username=${username}`);
