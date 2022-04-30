@@ -1,7 +1,7 @@
-import express from 'express';
-import checkAuth from './login.js';
+import express from "express";
+import checkAuth from "./login.js";
 import dotenv from "dotenv";
-import { addUser, getUser, getUsers, updateUser } from './database.js';
+import { addUser, getUser, getUsers, updateUser } from "./database.js";
 
 dotenv.config();
 
@@ -10,7 +10,7 @@ const main = async () => {
     app.use(express.json()); // for parsing application/json
 
     app.listen(4000, () => {
-        console.log('Listening on port 4000');
+        console.log("Listening on port 4000");
     });
 
     app.use("/login", checkAuth);

@@ -96,5 +96,3 @@ export async function updateUser(req, res, next) {
 
     res.status(200).send("User updated");
 }
-
-// export default useDatabase;
