@@ -1,0 +1,7 @@
+{
+  "name": "stocker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
