@@ -57,7 +57,7 @@ async function checkAuth() {
       user: {
         username: user.displayName,
         email: user.email,
-        // photo: user.photoURL,
+        photo: user.photoURL,
         location: "",
         stocks: [],
       },
