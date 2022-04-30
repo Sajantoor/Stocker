@@ -16,7 +16,7 @@ function getFirebase() {
     return db;
 }
 
-async function createUser(username, email, stocks, location) {
+async function createUser(username, email, stocks, location, photo) {
     const db = getFirebase();
     const userRef = collection(db, "users");
     const user = {
@@ -24,6 +24,7 @@ async function createUser(username, email, stocks, location) {
         email,
         stocks,
         location,
+        photo,
     };
     return await addDoc(userRef, user);
 }
@@ -66,7 +67,13 @@ export async function addUser(req, res, next) {
     try {
         const user = req.body.user;
         console.log(user);
-        createUser(user.username, user.email, user.stocks, user.location);
+        createUser(
+            user.username,
+            user.email,
+            user.stocks,
+            user.location,
+            user.photo
+        );
         res.status(201).send("User added");
     } catch (error) {
         res.status(400).send("Incorrect body to request");
