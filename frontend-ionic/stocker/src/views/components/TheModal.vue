@@ -1,37 +1,46 @@
 <template>
 
   <ion-content class="ion-padding">
-    <ion-searchbar></ion-searchbar>
-    <ion-list>
-    <ion-item>
-      <ion-label>Pokémon Yellow</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Mega Man X</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>The Legend of Zelda</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pac-Man</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Super Mario World</ion-label>
+    <ion-searchbar v-model="searchQuery" @search="queryAPI"></ion-searchbar>
+    <div>
+
+    </div>
+    <ion-list v-for="stock in stocks" :key="stock.id">
+      <!-- for stock of stocks -->
+    <ion-item >
+      <ion-label>{{stock["1. symbol"]}}</ion-label>
+      <ion-label style ="text-align: right;">{{stock["2. name"]}}</ion-label>
     </ion-item>
     </ion-list>
   </ion-content>
 </template>
 
-<script>
+<script setup>
 import {
   IonContent,
   IonSearchbar,
-  IonList
+  // IonList
 } from "@ionic/vue";
-import { defineComponent } from "vue";
+import { ref } from "vue";
 
-export default defineComponent({
-  name: "TheModal",
-  components: { IonContent, IonSearchbar,IonList },
-});
+const stocks = ref([]);
+const searchQuery = ref("");
+
+// eslint-disable-next-line
+async function queryAPI() {
+  const stockAPIKey = process.env.VUE_APP_STOCK_API_KEY || "IQ2B4DRX54AR4MEM";
+  const response = await fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${searchQuery.value}&apikey=${stockAPIKey}`);
+  const responseJSON = await response.json();
+  const stockQueryArray = responseJSON.bestMatches; 
+  let stockLength = stockQueryArray.length; 
+  // Update the state
+  // clear the array first
+  stocks.value.length = 0;
+  // populate the array with new items
+  for (var i = 0; i < stockLength; i++) {
+    stocks.value.push(stockQueryArray[i]);
+  }
+
+  console.log(stocks.value);
+}
 </script>
