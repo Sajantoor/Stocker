@@ -99,7 +99,7 @@ export async function updateUser(req, res, next) {
     let user = await getUserByUsername(username);
     user = user[0];
     console.log(user);
-    const updatedUser = req.body.user;
+    const updatedUser = req.body;
     const db = getFirebase();
     // cannot update username or email, so we will just update the stocks and location
     // get reference to the user document
@@ -110,6 +110,7 @@ export async function updateUser(req, res, next) {
     const fetchedUsers = await getDocs(userQuery);
     const userRef = fetchedUsers.docs[0].ref;
     console.log(userRef);
+    console.log(updatedUser);
     await updateDoc(userRef, {
         stocks: updatedUser.stocks,
         location: updatedUser.location,

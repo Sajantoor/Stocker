@@ -1,1 +1,1 @@
-export const BACKEND_SERVER = "https://stocker-app-backend.herokuapp.com";
+export const BACKEND_SERVER = "http://stocker-app-backend.herokuapp.com";
