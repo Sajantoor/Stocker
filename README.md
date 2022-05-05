@@ -8,7 +8,7 @@
 * [Technologies](#technologies)
 * [Future Features](#future-features)
 * [Getting Started](#getting-started)
-* [Contributions](#contributions)
+* [Creators](#creators)
 
 ## About
 Stocker is a mobile app used to keep people updated with their stocks of their choice. It allows other stock traders to contact one another and build relationships among them. It also lets other stock traders to keep up to date with the latest stock in the market is up. People are able to locate and meet up with one another. You can finally find the person who is shorting one of your stocks and ... have a nice conversation with them!
