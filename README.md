@@ -1,8 +1,7 @@
 # Stocker
 > A mobile, social media app for tracking your stock portfolio. SFU Mountain Madness 2022 Submission
 
-![frontend\public\assets\stocker.png](frontend\public\assets\stocker.png)
-
+![Stocker Logo](../main/frontend/public/assets/stocker.png)
 
 ### Table of Contents
 * [About](#about)
